@@ -56,29 +56,36 @@ public class ParkingSlot {
         System.out.println("Available Bike Slots : " + available_space_bike());
     }
 
-    // Book a Parking Slot for the Advance_Parking_System.Vehicle
-    void Advance_booking(Vehicle v){
-        if (v.vehicle_type.equalsIgnoreCase("Car")){
-            if (car_slots.size() < total_car_slot){
+    // Book a Parking Slot for the Vehicle
+    void Advance_booking(Vehicle v) {
+
+        if (v.vehicle_type.equalsIgnoreCase("Car")) {
+
+            if (car_slots.size() < total_car_slot) {
+
                 int slot = car_slots.size() + 1;
                 car_slots.add(v);
+
                 System.out.println("Car Slot Booked Successfully.");
-                System.out.println("Assign Slot : C " + slot);
+                System.out.println("Assigned Slot : C" + slot);
             }
             else {
-                System.out.println("All Slots are booked.");
+                System.out.println("All Car Slots are booked.");
             }
         }
 
-        else if (v.vehicle_type.equalsIgnoreCase("Bike")){
-            if (bike_slots.size() < total_bike_slot){
-                int slot = car_slots.size() + 1;
+        else if (v.vehicle_type.equalsIgnoreCase("Bike")) {
+
+            if (bike_slots.size() < total_bike_slot) {
+
+                int slot = bike_slots.size() + 1;
                 bike_slots.add(v);
+
                 System.out.println("Bike Slot Booked Successfully.");
-                System.out.println("Assign Slot : B " + slot);
+                System.out.println("Assigned Slot : B" + slot);
             }
             else {
-                System.out.println("All Slots are booked.");
+                System.out.println("All Bike Slots are booked.");
             }
         }
 
