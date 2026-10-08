@@ -1,16 +1,15 @@
 package Advance_Parking_System;
 
 public class Customer {
-    int cust_id;
-    String cust_name;
+    private String cust_name ;
+    private String password;
 
-    Customer(int cust_id , String cust_name){
-        this.cust_id = cust_id;
+    Customer(String cust_name, String password){
         this.cust_name = cust_name;
+        this.password = password;
     }
 
     void display_customer_details(){
-        System.out.println("The Advance_Parking_System.Customer ID : " + this.cust_id);
         System.out.println("The Advance_Parking_System.Customer Name : " + this.cust_name);
     }
 }
