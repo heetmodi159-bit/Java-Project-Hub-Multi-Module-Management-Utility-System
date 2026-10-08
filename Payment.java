@@ -1,20 +1,26 @@
 package Advance_Parking_System;
 
 public class Payment {
-    int fare = 0;
 
-    void calculate_fare(Vehicle v){
-        if(v.vehicle_type.equals("Car")){
-            fare += 50;
+    int fare = 0;
+    int advance_fare = 50;
+
+    void calculate_fare(Vehicle v) {
+
+        if (v.vehicle_type.equalsIgnoreCase("Car")) {
+            fare = 50;
         }
-        else if (v.vehicle_type.equals("Bike") || v.vehicle_type.equals("Scooter")) {
-            fare += 30;
+        else if (v.vehicle_type.equalsIgnoreCase("Bike")) {
+            fare = 30;
         }
     }
 
-    int total_fare = this.fare + 50;
+    void display_fare() {
 
-    void display_fare(){
-        System.out.println("The Total Fare is : " + this.total_fare);
+        int total_fare = fare + advance_fare;
+
+        System.out.println("Parking Fare  : " + fare);
+        System.out.println("Advance Fare  : " + advance_fare);
+        System.out.println("Total Fare    : " + total_fare);
     }
 }
