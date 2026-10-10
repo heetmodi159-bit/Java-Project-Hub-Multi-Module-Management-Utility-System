@@ -1,14 +1,21 @@
 package Advance_Parking_System;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class Booking {
 
     ParkingSlot ps;
 
+    LocalDate booking_date;
+    LocalTime entry_time;
+    LocalTime exit_time;
+
+
     // Create Booking Object
     Booking(ParkingSlot ps) {
         this.ps = ps;
+        this.booking_date = LocalDate.now();
     }
 
 
@@ -109,7 +116,23 @@ public class Booking {
         }
     }
 
-    Date booking_date(Date booking_date){
-        return booking_date;
+
+    // Set Entry Time
+    void set_entry_time() {
+        this.entry_time = LocalTime.now();
+    }
+
+
+    // Set Exit Time
+    void set_exit_time() {
+        this.exit_time = LocalTime.now();
+    }
+
+
+    // Display Booking Date and Time
+    void display_booking_time() {
+        System.out.println("Booking Date : " + this.booking_date);
+        System.out.println("Entry Time   : " + this.entry_time);
+        System.out.println("Exit Time    : " + this.exit_time);
     }
 }
