@@ -1,31 +1,103 @@
 package Advance_Parking_System;
 
-import java.util.ArrayList;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class ParkingSlot {
 
-    ArrayList<Vehicle> car_slots = new ArrayList<Vehicle>();
-    ArrayList<Vehicle> bike_slots = new ArrayList<Vehicle>();
-
-    ArrayList<Integer> car_slot_numbers = new ArrayList<Integer>();
-    ArrayList<Integer> bike_slot_numbers = new ArrayList<Integer>();
-
-    int total_car_slot = 25;
-    int total_bike_slot = 25;
+    public final int total_car_slot = 25;
+    public final int total_bike_slot = 25;
 
 
-    // Display all Car Parking Slots
-    void car_parking_slot() {
-        System.out.println();
-        System.out.println("Car Parking Slot : ");
+    // Check whether the selected slot number is valid
+    public boolean isValidSlot(String vehicleType, int slot) {
+
+        if (vehicleType.equalsIgnoreCase("Car")) {
+            return slot >= 1 && slot <= total_car_slot;
+        }
+
+        if (vehicleType.equalsIgnoreCase("Bike")) {
+            return slot >= 1 && slot <= total_bike_slot;
+        }
+
+        return false;
+    }
+
+
+    // Check whether a slot is available for the selected time
+    public boolean isSlotAvailable(
+            String vehicleType,
+            int selectedSlot,
+            LocalDateTime entry,
+            LocalDateTime exit,
+            List<BookingRecord> bookings) {
+
+        if (!isValidSlot(vehicleType, selectedSlot)
+                || !exit.isAfter(entry)) {
+            return false;
+        }
+
+        for (BookingRecord booking : bookings) {
+
+            if (booking.status.equals("CANCELLED")) {
+                continue;
+            }
+
+            if (!booking.vehicle.getVehicleType()
+                    .equalsIgnoreCase(vehicleType)
+                    || booking.selected_slot != selectedSlot) {
+                continue;
+            }
+
+            LocalDateTime existingEntry = booking.scheduled_entry;
+            LocalDateTime existingExit = booking.expected_exit;
+
+            if (booking.status.equals("ACTIVE")
+                    && booking.actual_entry != null) {
+
+                existingEntry = booking.actual_entry;
+                existingExit = LocalDateTime.MAX;
+
+            } else if (booking.status.equals("COMPLETED")
+                    && booking.actual_entry != null
+                    && booking.actual_exit != null) {
+
+                existingEntry = booking.actual_entry;
+                existingExit = booking.actual_exit;
+            }
+
+            boolean overlaps =
+                    entry.isBefore(existingExit)
+                            && exit.isAfter(existingEntry);
+
+            if (overlaps) {
+                return false;
+            }
+        }
+
+        return true;
+    }
+
+
+    // Display Car slots for the selected date and time
+    public void car_parking_slot(
+            LocalDateTime entry,
+            LocalDateTime exit,
+            List<BookingRecord> bookings) {
+
+        System.out.println("\n=========== CAR PARKING SLOTS ===========");
+
+        int available = 0;
 
         for (int i = 1; i <= total_car_slot; i++) {
 
-            if (car_slot_numbers.contains(i)) {
-                System.out.print("[🚗" + i + "] ");
-            }
-            else {
+            if (isSlotAvailable("Car", i, entry, exit, bookings)) {
+
                 System.out.printf("[C%02d] ", i);
+                available++;
+
+            } else {
+                System.out.printf("[🚗C%02d] ", i);
             }
 
             if (i % 5 == 0) {
@@ -33,25 +105,31 @@ public class ParkingSlot {
             }
         }
 
-        System.out.println();
-        System.out.println("Total Car Slots     : " + this.total_car_slot);
-        System.out.println("Occupied Car Slots  : " + car_slots.size());
-        System.out.println("Available Car Slots : " + available_space_car());
+        System.out.println(
+                "Available Car Slots for selected time: " + available
+        );
     }
 
 
-    // Display all Bike Parking Slots
-    void bike_parking_slot() {
-        System.out.println();
-        System.out.println("Bike Parking Slot : ");
+    // Display Bike slots for the selected date and time
+    public void bike_parking_slot(
+            LocalDateTime entry,
+            LocalDateTime exit,
+            List<BookingRecord> bookings) {
+
+        System.out.println("\n=========== BIKE PARKING SLOTS ===========");
+
+        int available = 0;
 
         for (int i = 1; i <= total_bike_slot; i++) {
 
-            if (bike_slot_numbers.contains(i)) {
-                System.out.print("[🏍️" + i + "] ");
-            }
-            else {
+            if (isSlotAvailable("Bike", i, entry, exit, bookings)) {
+
                 System.out.printf("[B%02d] ", i);
+                available++;
+
+            } else {
+                System.out.printf("[🏍️B%02d] ", i);
             }
 
             if (i % 5 == 0) {
@@ -59,40 +137,8 @@ public class ParkingSlot {
             }
         }
 
-        System.out.println();
-        System.out.println("Total Bike Slots     : " + this.total_bike_slot);
-        System.out.println("Occupied Bike Slots  : " + bike_slots.size());
-        System.out.println("Available Bike Slots : " + available_space_bike());
-    }
-
-
-    // Calculate Available Car Parking Slots
-    int available_space_car() {
-        return this.total_car_slot - car_slots.size();
-    }
-
-
-    // Calculate Available Bike Parking Slots
-    int available_space_bike() {
-        return this.total_bike_slot - bike_slots.size();
-    }
-
-
-    // Display Details of All Parked Vehicles
-    void display_psv_details() {
-
-        System.out.println("=========== Car Details ===========");
-
-        for (int i = 0; i < car_slots.size(); i++) {
-            System.out.println("Slot : C" + car_slot_numbers.get(i));
-            car_slots.get(i).display_vehicle_details();
-        }
-
-        System.out.println("=========== Bike Details ===========");
-
-        for (int i = 0; i < bike_slots.size(); i++) {
-            System.out.println("Slot : B" + bike_slot_numbers.get(i));
-            bike_slots.get(i).display_vehicle_details();
-        }
+        System.out.println(
+                "Available Bike Slots for selected time: " + available
+        );
     }
 }
