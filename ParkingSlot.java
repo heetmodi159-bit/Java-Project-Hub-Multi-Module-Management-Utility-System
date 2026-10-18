@@ -8,8 +8,7 @@ public class ParkingSlot {
     public final int total_car_slot = 25;
     public final int total_bike_slot = 25;
 
-
-    // Check whether the selected slot number is valid
+    // Validate the Selected Slot
     public boolean isValidSlot(String vehicleType, int slot) {
 
         if (vehicleType.equalsIgnoreCase("Car")) {
@@ -23,8 +22,7 @@ public class ParkingSlot {
         return false;
     }
 
-
-    // Check whether a slot is available for the selected time
+    // Check Whether the Slot Is Available for the Selected Time
     public boolean isSlotAvailable(
             String vehicleType,
             int selectedSlot,
@@ -33,7 +31,10 @@ public class ParkingSlot {
             List<BookingRecord> bookings) {
 
         if (!isValidSlot(vehicleType, selectedSlot)
+                || entry == null
+                || exit == null
                 || !exit.isAfter(entry)) {
+
             return false;
         }
 
@@ -46,12 +47,14 @@ public class ParkingSlot {
             if (!booking.vehicle.getVehicleType()
                     .equalsIgnoreCase(vehicleType)
                     || booking.selected_slot != selectedSlot) {
+
                 continue;
             }
 
             LocalDateTime existingEntry = booking.scheduled_entry;
             LocalDateTime existingExit = booking.expected_exit;
 
+            // An Active Vehicle Continues Occupying Its Slot
             if (booking.status.equals("ACTIVE")
                     && booking.actual_entry != null) {
 
@@ -78,8 +81,7 @@ public class ParkingSlot {
         return true;
     }
 
-
-    // Display Car slots for the selected date and time
+    // Display Car Parking Slots
     public void car_parking_slot(
             LocalDateTime entry,
             LocalDateTime exit,
@@ -92,12 +94,10 @@ public class ParkingSlot {
         for (int i = 1; i <= total_car_slot; i++) {
 
             if (isSlotAvailable("Car", i, entry, exit, bookings)) {
-
                 System.out.printf("[C%02d] ", i);
                 available++;
-
             } else {
-                System.out.printf("[🚗C%02d] ", i);
+                System.out.printf("[XX%02d] ", i);
             }
 
             if (i % 5 == 0) {
@@ -105,13 +105,10 @@ public class ParkingSlot {
             }
         }
 
-        System.out.println(
-                "Available Car Slots for selected time: " + available
-        );
+        System.out.println("Available Car Slots : " + available);
     }
 
-
-    // Display Bike slots for the selected date and time
+    // Display Bike Parking Slots
     public void bike_parking_slot(
             LocalDateTime entry,
             LocalDateTime exit,
@@ -124,12 +121,10 @@ public class ParkingSlot {
         for (int i = 1; i <= total_bike_slot; i++) {
 
             if (isSlotAvailable("Bike", i, entry, exit, bookings)) {
-
                 System.out.printf("[B%02d] ", i);
                 available++;
-
             } else {
-                System.out.printf("[🏍️B%02d] ", i);
+                System.out.printf("[XX%02d] ", i);
             }
 
             if (i % 5 == 0) {
@@ -137,8 +132,6 @@ public class ParkingSlot {
             }
         }
 
-        System.out.println(
-                "Available Bike Slots for selected time: " + available
-        );
+        System.out.println("Available Bike Slots : " + available);
     }
 }
