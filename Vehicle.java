@@ -13,9 +13,10 @@ public class Vehicle {
             );
         }
 
-        if (vehicle_type == null ||
-                (!vehicle_type.equalsIgnoreCase("Car")
-                        && !vehicle_type.equalsIgnoreCase("Bike"))) {
+        if (vehicle_type == null
+                || (!vehicle_type.equalsIgnoreCase("Car")
+                && !vehicle_type.equalsIgnoreCase("Bike"))) {
+
             throw new IllegalArgumentException(
                     "Only Car and Bike are allowed."
             );
