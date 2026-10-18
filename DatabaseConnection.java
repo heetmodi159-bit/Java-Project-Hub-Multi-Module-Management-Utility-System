@@ -1,0 +1,22 @@
+package Advance_Parking_System;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.SQLException;
+
+public class DatabaseConnection {
+
+    private static final String URL =
+            "jdbc:mysql://127.0.0.1:3306/advance_parking_system"
+                    + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
+
+    private static final String USER = "root";
+
+    // Replace this with your MySQL password.
+    private static final String PASSWORD = "root";
+
+    // Open a Connection to MySQL
+    public static Connection getConnection() throws SQLException {
+        return DriverManager.getConnection(URL, USER, PASSWORD);
+    }
+}
