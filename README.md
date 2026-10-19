@@ -317,15 +317,15 @@ After completing a module, the user can return to the main menu and select anoth
 
 ## 🚀 Future Enhancements
 
-- [ ] Integrate MySQL for persistent storage.
-- [ ] Add secure user authentication and password hashing.
-- [ ] Improve exception handling and input validation.
-- [ ] Add automated unit tests.
-- [ ] Implement persistent contact, task, and shopping records.
-- [ ] Add a real payment gateway to the shopping application.
-- [ ] Create a graphical user interface.
-- [ ] Add administrator controls to the parking system.
-- [ ] Improve reporting and data export features.
+- Integrate MySQL for persistent storage.
+- Add secure user authentication and password hashing.
+- Improve exception handling and input validation.
+- Add automated unit tests.
+- Implement persistent contact, task, and shopping records.
+- Add a real payment gateway to the shopping application.
+- Create a graphical user interface.
+- Add administrator controls to the parking system.
+- Improve reporting and data export features.
 
 ## 🎯 Learning Outcomes
 
