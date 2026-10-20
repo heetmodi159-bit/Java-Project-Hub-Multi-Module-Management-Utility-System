@@ -1,3 +1,5 @@
+package OS_System;
+
 import java.util.Random;
 import java.util.Scanner;
 
@@ -113,9 +115,8 @@ public class TypingSpeed {
         return wpm;
     }
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void typingMenu(Scanner sc) throws InterruptedException {
 
-        Scanner sc = new Scanner(System.in);
         Random random = new Random();
         double highScore = 0;
         String again = "yes";
