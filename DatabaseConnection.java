@@ -10,7 +10,7 @@ public class DatabaseConnection {
             "jdbc:mysql://127.0.0.1:3306/advance_parking_system"
                     + "?useSSL=false&allowPublicKeyRetrieval=true&serverTimezone=UTC";
 
-    private static final String USER = "root";
+    private static final String USER = "****";
 
     // Replace this with your MySQL password.
     private static final String PASSWORD = "****";
