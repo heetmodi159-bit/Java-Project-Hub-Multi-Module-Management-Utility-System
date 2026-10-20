@@ -1,3 +1,5 @@
+package OS_System;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -34,10 +36,10 @@ class ContactBook {
 
     void showMenu() {
         System.out.println("\n========= CONTACT MANAGEMENT =========");
-        System.out.println(" 1. Add Contact");
-        System.out.println(" 2. Remove Contact");
-        System.out.println(" 3. Update Contact");
-        System.out.println(" 4. Search Contact");
+        System.out.println(" 1. Add Advance_Parking_System.Contact");
+        System.out.println(" 2. Remove Advance_Parking_System.Contact");
+        System.out.println(" 3. Update Advance_Parking_System.Contact");
+        System.out.println(" 4. Search Advance_Parking_System.Contact");
         System.out.println(" 5. Call Person");
         System.out.println(" 6. Exit");
         System.out.print("Enter your choice: ");
@@ -55,7 +57,7 @@ class ContactBook {
     }
 
     void addContact() {
-        System.out.println("--- Add Contact ---");
+        System.out.println("--- Add Advance_Parking_System.Contact ---");
         System.out.print("Name   : ");
         String name = sc.nextLine();
         System.out.print("Phone  : ");
@@ -64,16 +66,16 @@ class ContactBook {
         String email = sc.nextLine();
 
         contacts.add(new Contact(name, phone, email));
-        System.out.println("Contact added successfully!");
+        System.out.println("Advance_Parking_System.Contact added successfully!");
     }
 
     void removeContact() {
-        System.out.println("--- Remove Contact ---");
+        System.out.println("--- Remove Advance_Parking_System.Contact ---");
         System.out.print("Enter name / phone: ");
         int index = findContact(sc.nextLine());
 
         if (index == -1) {
-            System.out.println("Contact not found.");
+            System.out.println("Advance_Parking_System.Contact not found.");
             return;
         }
 
@@ -82,19 +84,19 @@ class ContactBook {
 
         if (confirm.equalsIgnoreCase("yes")) {
             contacts.remove(index);
-            System.out.println("Contact removed successfully!");
+            System.out.println("Advance_Parking_System.Contact removed successfully!");
         } else {
             System.out.println("Delete cancelled.");
         }
     }
 
     void updateContact() {
-        System.out.println("--- Update Contact ---");
+        System.out.println("--- Update Advance_Parking_System.Contact ---");
         System.out.print("Enter name / phone: ");
         int index = findContact(sc.nextLine());
 
         if (index == -1) {
-            System.out.println("Contact not found.");
+            System.out.println("Advance_Parking_System.Contact not found.");
             return;
         }
 
@@ -105,16 +107,16 @@ class ContactBook {
         c.phone = sc.nextLine();
         System.out.print("New Email  : ");
         c.email = sc.nextLine();
-        System.out.println("Contact updated successfully!");
+        System.out.println("Advance_Parking_System.Contact updated successfully!");
     }
 
     void searchContact() {
-        System.out.println("--- Search Contact ---");
+        System.out.println("--- Search Advance_Parking_System.Contact ---");
         System.out.print("Enter name / phone: ");
         int index = findContact(sc.nextLine());
 
         if (index == -1) {
-            System.out.println("Contact not found.");
+            System.out.println("Advance_Parking_System.Contact not found.");
         } else {
             contacts.get(index).displayContactDetails();
         }
@@ -126,7 +128,7 @@ class ContactBook {
         int index = findContact(sc.nextLine());
 
         if (index == -1) {
-            System.out.println("Contact not found.");
+            System.out.println("Advance_Parking_System.Contact not found.");
         } else {
             contacts.get(index).call();
         }
@@ -134,9 +136,8 @@ class ContactBook {
 }
 
 public class ContactManagement {
-    public static void main(String[] args) {
+    public static void contactMenu(Scanner sc) {
 
-        Scanner sc = new Scanner(System.in);
         ContactBook book = new ContactBook(sc);
         boolean running = true;
 
