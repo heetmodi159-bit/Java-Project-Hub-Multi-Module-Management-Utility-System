@@ -1,3 +1,5 @@
+package OS_System;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -13,7 +15,7 @@ public class TaskManager {
     }
 
     public void addTask() {
-        System.out.println("\n--- Add Task ---");
+        System.out.println("\n--- Add Advance_Parking_System.Task ---");
 
         System.out.print("Title: ");
         String title = sc.nextLine();
@@ -28,7 +30,7 @@ public class TaskManager {
         tasks.add(task);
         nextId++;
 
-        System.out.println("Task added with ID " + task.getId() + ".");
+        System.out.println("Advance_Parking_System.Task added with ID " + task.getId() + ".");
     }
 
     public void viewAllTasks() {
@@ -45,7 +47,7 @@ public class TaskManager {
     }
 
     public void updateTask() {
-        System.out.println("\n--- Update Task ---");
+        System.out.println("\n--- Update Advance_Parking_System.Task ---");
 
         System.out.print("Enter task ID to update: ");
         int id = sc.nextInt();
@@ -53,7 +55,7 @@ public class TaskManager {
 
         Task task = findById(id);
         if (task == null) {
-            System.out.println("Task not found.");
+            System.out.println("Advance_Parking_System.Task not found.");
             return;
         }
 
@@ -66,11 +68,11 @@ public class TaskManager {
         task.setDueDate(readDate());
         task.setPriority(readPriority());
 
-        System.out.println("Task updated.");
+        System.out.println("Advance_Parking_System.Task updated.");
     }
 
     public void deleteTask() {
-        System.out.println("\n--- Delete Task ---");
+        System.out.println("\n--- Delete Advance_Parking_System.Task ---");
 
         System.out.print("Enter task ID to delete: ");
         int id = sc.nextInt();
@@ -78,12 +80,12 @@ public class TaskManager {
 
         Task task = findById(id);
         if (task == null) {
-            System.out.println("Task not found.");
+            System.out.println("Advance_Parking_System.Task not found.");
             return;
         }
 
         tasks.remove(task);
-        System.out.println("Task deleted.");
+        System.out.println("Advance_Parking_System.Task deleted.");
     }
 
     public void markAsDone() {
@@ -95,16 +97,16 @@ public class TaskManager {
 
         Task task = findById(id);
         if (task == null) {
-            System.out.println("Task not found.");
+            System.out.println("Advance_Parking_System.Task not found.");
             return;
         }
 
         task.setDone(true);
-        System.out.println("Task marked as done.");
+        System.out.println("Advance_Parking_System.Task marked as done.");
     }
 
     public void searchTask() {
-        System.out.println("\n--- Search Task ---");
+        System.out.println("\n--- Search Advance_Parking_System.Task ---");
 
         System.out.print("Enter keyword: ");
         String keyword = sc.nextLine().toLowerCase();
