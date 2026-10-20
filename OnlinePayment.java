@@ -1,4 +1,4 @@
-package Shopping_App;
+package OS_System;
 
 import java.util.Scanner;
 
