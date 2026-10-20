@@ -1,3 +1,5 @@
+package OS_System;
+
 import java.util.Date;
 import java.util.Scanner;
 
@@ -256,9 +258,7 @@ class CurrencyTool {
 }
 
 public class ToolsAndUtilities {
-    public static void main(String[] args) {
-
-        Scanner sc = new Scanner(System.in);
+    public static void toolsMenu(Scanner sc) {
 
         CalculatorTool calculator = new CalculatorTool();
         TemperatureTool temperature = new TemperatureTool();
