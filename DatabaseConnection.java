@@ -13,7 +13,7 @@ public class DatabaseConnection {
     private static final String USER = "root";
 
     // Replace this with your MySQL password.
-    private static final String PASSWORD = "root";
+    private static final String PASSWORD = "****";
 
     // Open a Connection to MySQL
     public static Connection getConnection() throws SQLException {
