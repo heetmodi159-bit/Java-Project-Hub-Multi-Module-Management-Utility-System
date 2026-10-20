@@ -1,7 +1,6 @@
-package Advance_Parking_System;
+package OS_System;
 
 import java.sql.*;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
