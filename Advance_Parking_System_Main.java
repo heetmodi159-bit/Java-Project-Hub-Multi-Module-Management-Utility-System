@@ -1,4 +1,4 @@
-package Advance_Parking_System;
+package OS_System;
 
 import java.sql.SQLException;
 import java.time.LocalDate;
@@ -8,11 +8,11 @@ import java.time.format.DateTimeParseException;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Parking_Management_System {
+public class Advance_Parking_System_Main {
 
     public static void startParkingSystem(Scanner sc) {
 
-        try (Scanner sc = new Scanner(System.in)) {
+        try{
 
             ArrayList<Customer> users = new ArrayList<>();
 
