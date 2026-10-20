@@ -1,5 +1,5 @@
 
-package Advance_Parking_System;
+package OS_System;
 
 import java.util.Scanner;
 
