@@ -1,4 +1,4 @@
-package Advance_Parking_System;
+package OS_System;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
